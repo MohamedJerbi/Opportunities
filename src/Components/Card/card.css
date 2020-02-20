@@ -1,0 +1,20 @@
+.card{
+display:flex;
+margin-left:3vw;
+margin-bottom:30px;
+min-height:139px;
+max-height:20vh;
+transform: scale(0.9);
+}
+.text{
+font-family:Lato;
+color:#52565e
+}
+.img{
+padding-right:10px;
+transform:translateY(6px);
+}
+.card:hover{
+cursor: pointer;
+  transform: scale(1.05);
+}
