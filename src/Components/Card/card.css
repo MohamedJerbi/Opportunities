@@ -6,6 +6,7 @@ min-height:139px;
 max-height:20vh;
 transform: scale(0.9);
 }
+
 .text{
 font-family:Lato;
 color:#52565e
@@ -17,4 +18,23 @@ transform:translateY(6px);
 .card:hover{
 cursor: pointer;
   transform: scale(1.05);
+}
+.popup{
+height:100vh;
+width:100%;
+position:fixed;
+top:0;
+left:0;
+background-color:rgba(0, 0, 0, 0.8);
+z-index:1200;
+}
+.popcontent{
+width:40%;
+background-color:white;
+height:90vh;
+box-shadow:0 2rem 4 rem rgba(0, 0, 0, 0.2);
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%)
 }

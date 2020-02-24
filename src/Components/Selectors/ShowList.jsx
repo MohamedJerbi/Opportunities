@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 import Popover from "@material-ui/core/Popover";
+import Lister from "./Lister";
 import "./styles.css";
-import MenuItem from "@material-ui/core/MenuItem";
-function Programs({ updateData }) {
-  const [product, setProduct] = React.useState("");
+
+function ShowList({ updateData, data, title }) {
+  const [checked, setChecked] = useState([]);
+  function updateChecked(value) {
+    if (value.length > 0) {
+      setSelected({ color: "#fff", bcolor: selected.bcolor });
+      setSelected({ bcolor: "#52565e", color: selected.color });
+    } else {
+      setSelected({ color: "#caccd1", bcolor: selected.bcolor });
+      setSelected({ bcolor: "#fff", color: selected.color });
+    }
+    setChecked(value);
+  }
 
   const [selected, setSelected] = useState({
     color: "#caccd1",
@@ -13,9 +24,7 @@ function Programs({ updateData }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
-  const handleChange = event => {
-    setProduct(event.target.value);
-  };
+
   return (
     <>
       <button
@@ -30,7 +39,7 @@ function Programs({ updateData }) {
           setAnchorEl(event.currentTarget);
         }}
       >
-        Programs
+        {title}
       </button>
       <Popover
         id={id}
@@ -46,12 +55,15 @@ function Programs({ updateData }) {
           horizontal: "center"
         }}
       >
-        <MenuItem value={1}>Global Volunteer</MenuItem>
-        <MenuItem value={2}> Global Entrepeneur</MenuItem>
-        <MenuItem value={3}>Global Talent</MenuItem>
+        <Lister
+          checkedd={checked}
+          updateChecked={updateChecked}
+          updateData={updateData}
+          data={data}
+        />
       </Popover>
     </>
   );
 }
 
-export default Programs;
+export default ShowList;

@@ -1,17 +1,18 @@
 import React from "react";
-//@materialui imports
+//@material ui imports
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 //components
-import Location from "../Selectors/Location";
 import Programs from "../Selectors/Programs";
-import Date from "../Selectors/Date";
-import Backgrounds from "../Selectors/Backgrounds";
-import Skills from "../Selectors/Skills";
-import Languages from "../Selectors/Languages";
-import More from "../Selectors/More";
-
-function Navigation({ scroll }) {
+import ShowList from "../Selectors/ShowList";
+import {
+  backgrounds,
+  nationalities,
+  skills,
+  languages
+} from "../Selectors/items";
+import TextField from "@material-ui/core/TextField";
+function Navigation({ updateBackgrounds, updateSearch, data }) {
   return (
     <React.Fragment>
       <AppBar style={{ backgroundColor: "white" }}>
@@ -22,15 +23,36 @@ function Navigation({ scroll }) {
             color: "white"
           }}
         >
+          <p />
           <Programs />
-          <Location />
-          <Date />
-          <Backgrounds />
-          <Skills />
-          <Languages />
-          <More />
-		  {/*making sure the the filters list is in aligned on the left using a p element wth paddingleft trick*/}
+          <ShowList
+            title="Locations"
+            updateData={updateBackgrounds}
+            data={nationalities}
+          />
+          <ShowList
+            title="Backgrounds"
+            updateData={updateBackgrounds}
+            data={backgrounds}
+          />
+          <ShowList
+            title="Skills"
+            updateData={updateBackgrounds}
+            data={skills}
+          />
+          <ShowList
+            title="Languages"
+            updateData={updateBackgrounds}
+            data={languages}
+          />
+          {/*making sure the the filters list is in aligned on the left using a p element wth paddingleft trick*/}
           <p style={{ paddingLeft: "40%" }} />
+          <TextField
+            value={data}
+            onChange={e => updateSearch(e.target.value)}
+            id="standard-basic"
+            label="Search"
+          />
         </Toolbar>
       </AppBar>
       <Toolbar />
